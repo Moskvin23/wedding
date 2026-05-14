@@ -1,0 +1,1900 @@
+/* --- Global shell --- */
+.invitation-app {
+  width: 100%;
+  background: #f5f5f5;
+  overflow-x: hidden;
+}
+
+.page-inner {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding-left: 80px;
+  padding-right: 80px;
+}
+
+@keyframes heroReveal {
+  0% {
+    opacity: 0;
+    filter: blur(24px) brightness(1.15);
+    transform: scale(1.04);
+  }
+  40% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 1;
+    filter: blur(0px) brightness(1);
+    transform: scale(1);
+  }
+}
+
+@keyframes heroOverlayFade {
+  0%   { opacity: 1; }
+  100% { opacity: 0; pointer-events: none; }
+}
+
+@keyframes heroTextIn {
+  0% {
+    opacity: 0;
+    transform: translateY(32px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* --- Hero --- */
+.hero-section {
+  overflow: hidden;
+  width: 100%;
+  height: 100vh;
+  position: relative;
+  background: linear-gradient(162.88deg, #FFA7ED -0.13%, #FF787A 100%);
+}
+
+.hero-section::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: #fff;
+  animation: heroOverlayFade 0.4s ease-out forwards;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.hero-section::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 280px;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  -webkit-mask: linear-gradient(to top, black 0%, transparent 100%);
+  mask: linear-gradient(to top, black 0%, transparent 100%);
+  pointer-events: none;
+  z-index: 4;
+}
+
+.hero-flower {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 2;
+  pointer-events: none;
+  user-select: none;
+  color: #FF96B3;
+  mix-blend-mode: multiply;
+  opacity: 0.5;
+}
+
+.hero-content {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  user-select: none;
+}
+
+.hero-names span,
+.hero-date {
+  opacity: 0;
+  animation: heroTextIn 1.4s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.hero-names span:nth-child(1) {
+  animation-delay: 0.6s;
+}
+
+.hero-names span:nth-child(2) {
+  animation-delay: 1s;
+}
+
+.hero-date {
+  animation-delay: 1.4s;
+}
+
+.hero-names {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  font-family: 'Boska', serif;
+  font-weight: 400;
+  font-style: italic;
+  font-size: 200px;
+  line-height: 180px;
+  letter-spacing: -0.06em;
+  color: #FFFEF3;
+}
+
+.hero-names-second {
+  padding-left: 1.3em;
+}
+
+.hero-date {
+  margin-top: 32px;
+  font-family: 'Boska', serif;
+  font-weight: 700;
+  font-style: italic;
+  font-size: 100px;
+  line-height: 140px;
+  letter-spacing: 0;
+  color: #FFFEF3;
+}
+
+/* --- Welcome --- */
+.welcome-section {
+  background: #fbf6e6;
+  padding: 56px 0 0;
+}
+
+.welcome-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto auto;
+  column-gap: 48px;
+  row-gap: 0;
+}
+
+.welcome-title {
+  grid-area: 1 / 1;
+  margin: 0;
+  align-self: center;
+  font-family: 'Boska', serif;
+  font-size: 100px;
+  line-height: 110px;
+  font-weight: 400;
+  font-style: italic;
+  letter-spacing: -0.04em;
+  color: #413300;
+  white-space: pre-line;
+}
+
+.welcome-photo-wrap {
+  grid-area: 1 / 2;
+  margin-top: -120px;
+}
+
+.welcome-flowers {
+  grid-area: 2 / 1;
+  display: block;
+  width: 100%;
+  max-width: 420px;
+  align-self: end;
+}
+
+.welcome-content {
+  grid-area: 2 / 2;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  padding: 0 0 80px;
+  margin-top: 128px;
+}
+
+.welcome-photo-wrap {
+  overflow: visible;
+  padding: 24px;
+}
+
+.welcome-photo {
+  display: block;
+  width: 70%;
+  scale: 1.3;
+  height: auto;
+  border-radius: 2px;
+  transform: rotate(6.59deg);
+  clip-path: inset(33% 9% 7% 22%);
+  box-shadow: 0 20px 46px rgba(44, 24, 12, 0.22);
+}
+
+.welcome-heading {
+  margin: 0;
+  font-family: 'EB Garamond', serif;
+  font-size: 56px;
+  line-height: 1;
+  font-weight: 500;
+  font-style: normal;
+  letter-spacing: 0;
+  color: #413300;
+}
+
+.welcome-text {
+  margin: 0;
+  font-family: 'EB Garamond', serif;
+  font-size: 32px;
+  line-height: 1.2;
+  font-weight: 400;
+  font-style: normal;
+  letter-spacing: 0;
+  color: #413300;
+  white-space: pre-line;
+}
+
+.welcome-text--mobile {
+  display: none;
+}
+
+/* --- Story: трохи тепліший беж --- */
+.story-section {
+  background: #f3ebe0;
+  padding: 96px 0;
+  border-top: 1px solid rgba(43, 17, 5, 0.06);
+}
+
+.story-inner {
+  max-width: 820px;
+}
+
+.story-kicker {
+  font-family: 'Poppins', sans-serif;
+  font-size: 12px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #6b5344;
+}
+
+.story-title {
+  margin-top: 12px;
+  font-family: 'EB Garamond', serif;
+  font-size: 56px;
+  font-weight: 800;
+  line-height: 1;
+  color: #2b1105;
+}
+
+.story-lead {
+  margin-top: 20px;
+  font-family: 'EB Garamond', serif;
+  font-size: 28px;
+  font-weight: 700;
+  line-height: 1.2;
+  color: #2b1105;
+}
+
+.story-body {
+  margin-top: 16px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 16px;
+  line-height: 1.65;
+  color: #3b1e12;
+}
+
+/* --- Location: світлий блок + «карта» --- */
+.location-section {
+  background: #ffffff;
+  padding: 0;
+  min-height: 460px;
+  display: flex;
+  align-items: center;
+}
+
+.location-inner {
+  width: 100%;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(320px, 520px);
+  gap: clamp(24px, 3vw, 48px);
+  align-items: center;
+}
+
+.location-copy {
+  min-width: 0;
+}
+
+.location-kicker {
+  font-family: 'Poppins', sans-serif;
+  font-size: 12px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #6b5344;
+}
+
+.location-title {
+  margin-top: 12px;
+  font-family: 'EB Garamond', serif;
+  font-size: 56px;
+  font-weight: 800;
+  font-style: normal;
+  line-height: 1;
+  letter-spacing: 0;
+  color: #2b1105;
+}
+
+.location-venue {
+  margin-top: 24px;
+  width: auto;
+  max-width: min(100%, 640px);
+  font-family: 'EB Garamond', serif;
+  font-size: 24px;
+  font-weight: 400;
+  font-style: normal;
+  line-height: 1.2;
+  letter-spacing: 0;
+  color: #000000;
+}
+
+.location-venue--mobile {
+  display: none;
+}
+
+.location-address {
+  margin-top: 24px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-family: 'EB Garamond', serif;
+  font-size: 18px;
+  font-weight: 500;
+  font-style: normal;
+  line-height: 22px;
+  letter-spacing: 0;
+  color: #000000;
+}
+
+.location-icon {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+}
+
+.location-map-btn.location-map-btn--mobile {
+  display: none;
+}
+
+.location-map-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 24px;
+  width: fit-content;
+  min-width: 191px;
+  height: 52px;
+  padding: 10px 24px;
+  white-space: nowrap;
+  gap: 10px;
+  border-radius: 8px;
+  background: #ff481a;
+  text-decoration: none;
+  font-family: 'EB Garamond', serif;
+  font-size: 20px;
+  font-weight: 500;
+  font-style: normal;
+  line-height: 32px;
+  letter-spacing: 0;
+  color: #ffffff;
+  transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.location-map-btn:hover {
+  transform: scale(1.05);
+}
+
+.location-map {
+  width: 100%;
+  max-width: 520px;
+  height: 300px;
+  border-radius: 4px;
+  overflow: hidden;
+  justify-self: end;
+}
+
+@media (max-width: 1360px) {
+  .page-inner {
+    padding-left: 56px;
+    padding-right: 56px;
+  }
+
+  .location-venue {
+    max-width: min(100%, 560px);
+  }
+
+  .location-map {
+    max-width: 460px;
+  }
+}
+
+/* ===================== LARGE TABLET / SMALL LAPTOP (≤1280px) ===================== */
+@media (max-width: 1280px) {
+  .location-section {
+    min-height: unset;
+    align-items: flex-start;
+    padding: 24px 0 40px;
+  }
+
+  .location-inner {
+    gap: 32px;
+    align-items: start;
+  }
+}
+
+/* --- Schedule: крем + декор як у макеті --- */
+.schedule-section {
+  position: relative;
+  overflow: hidden;
+  background: #fcf9f7;
+  padding: 96px 0;
+}
+
+.schedule-flower {
+  position: absolute;
+  top: 0;
+  height: 70%;
+  width: auto;
+  pointer-events: none;
+  user-select: none;
+  z-index: 0;
+}
+
+.schedule-flower--left {
+  left: 0;
+}
+
+.schedule-flower--right {
+  right: 0;
+  top: auto;
+  bottom: 0;
+}
+
+.schedule-title {
+  position: relative;
+  z-index: 1;
+  margin: 0;
+  font-family: 'EB Garamond', serif;
+  font-size: 56px;
+  font-weight: 800;
+  font-style: normal;
+  line-height: 1;
+  letter-spacing: 0;
+  color: #2b1105;
+  text-align: center;
+}
+
+.schedule-day {
+  position: relative;
+  z-index: 1;
+  margin-top: 64px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.schedule-day-label {
+  margin-bottom: 64px;
+}
+
+.schedule-day h3 {
+  margin: 0 0 24px;
+  font-family: 'EB Garamond', serif;
+  font-size: 56px;
+  line-height: 1;
+  font-weight: 800;
+  color: #2b1105;
+}
+
+.schedule-list {
+  width: min(820px, 100%);
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 64px;
+}
+
+.schedule-item {
+  display: grid;
+  grid-template-columns: 88px 1fr;
+  gap: 40px;
+  align-items: start;
+  width: 820px;
+  max-width: 100%;
+  min-height: 126px;
+}
+
+.schedule-item span {
+  font-family: 'EB Garamond', serif;
+  font-size: 28px;
+  font-weight: 600;
+  font-style: normal;
+  line-height: 26px;
+  letter-spacing: 0;
+  color: #ff481a;
+}
+
+.schedule-item p {
+  margin: 0;
+  font-family: 'EB Garamond', serif;
+  font-size: 32px;
+  font-weight: 500;
+  font-style: normal;
+  line-height: 1;
+  letter-spacing: 0;
+  color: #152b05;
+}
+
+.schedule-item small {
+  display: block;
+  margin-top: 16px;
+  font-family: 'EB Garamond', serif;
+  font-size: 20px;
+  font-weight: 400;
+  font-style: normal;
+  line-height: 26px;
+  letter-spacing: 0;
+  color: #152b05;
+  white-space: pre-line;
+}
+
+/* --- Dress code --- */
+.dress-section {
+  background: #ffffff;
+  padding: 96px 0;
+  border-top: 1px solid rgba(43, 17, 5, 0.06);
+}
+
+.dress-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.dress-title {
+  font-family: 'EB Garamond', serif;
+  font-size: 56px;
+  font-weight: 800;
+  font-style: normal;
+  line-height: 1;
+  letter-spacing: 0;
+  color: #2b1105;
+  text-align: center;
+}
+
+.dress-text {
+  margin-top: 24px;
+  width: 864px;
+  max-width: 100%;
+  font-family: 'EB Garamond', serif;
+  font-size: 24px;
+  font-weight: 400;
+  font-style: normal;
+  line-height: 1.2;
+  letter-spacing: 0;
+  text-align: center;
+  color: #000000;
+}
+
+.dress-palette {
+  margin-top: 48px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.dress-row-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.dress-row-label {
+  font-family: 'EB Garamond', serif;
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 1.2;
+  letter-spacing: 0;
+  text-align: center;
+  color: #000000;
+  margin: 0 0 4px 0;
+}
+
+.dress-swatch-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1px;
+  justify-content: center;
+}
+
+.dress-swatch {
+  width: 120px;
+  height: 120px;
+  flex-shrink: 0;
+}
+
+/* --- Calendar --- */
+.calendar-section {
+  background: linear-gradient(180deg, #9FCBFF 0%, #FCF9F7 60.51%);
+  padding: 80px 0;
+}
+
+.calendar-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.calendar-header {
+  display: flex;
+  align-items: baseline;
+  gap: 16px;
+  margin-bottom: 10px;
+}
+
+.calendar-month {
+  font-family: 'EB Garamond', serif;
+  font-size: 32px;
+  font-weight: 800;
+  font-style: normal;
+  line-height: 1;
+  letter-spacing: 0;
+  color: #000B5E;
+}
+
+.calendar-year {
+  font-family: 'EB Garamond', serif;
+  font-size: 32px;
+  font-weight: 800;
+  font-style: normal;
+  line-height: 1;
+  letter-spacing: 0;
+  color: #000B5E;
+}
+
+.calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 52px);
+  gap: 4px;
+  text-align: center;
+}
+
+.calendar-weekday {
+  font-family: 'Poppins', sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #413300;
+  opacity: 0.45;
+  padding-bottom: 12px;
+}
+
+.calendar-day {
+  font-family: 'EB Garamond', serif;
+  font-size: 18px;
+  font-weight: 500;
+  font-style: normal;
+  line-height: 22px;
+  letter-spacing: 0;
+  text-align: center;
+  color: #000B5E;
+  width: 52px;
+  height: 52px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+}
+
+.calendar-day--wedding {
+  background: none;
+  position: relative;
+}
+
+.calendar-day__marker {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 52px;
+  height: 52px;
+}
+
+.calendar-day__marker-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.calendar-day__marker-num {
+  position: relative;
+  z-index: 1;
+  font-family: 'EB Garamond', serif;
+  font-size: 22px;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+.calendar-label {
+  margin-top: 40px;
+  width: 382px;
+  max-width: 100%;
+  font-family: 'EB Garamond', serif;
+  font-size: 16px;
+  font-weight: 500;
+  font-style: normal;
+  line-height: 20px;
+  letter-spacing: 0;
+  text-align: center;
+  color: #000000;
+}
+
+/* --- Venue Photos --- */
+.venue-photos-section {
+  width: 100%;
+}
+
+.venue-photos-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.venue-photo-wrap {
+  overflow: hidden;
+  aspect-ratio: 3 / 4;
+}
+
+.venue-photo {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* --- Gallery: темна смуга (як у багатьох весільних макетах) --- */
+.gallery-section {
+  background: linear-gradient(180deg, #1a2f3d 0%, #132535 100%);
+  padding: 96px 0;
+  color: #f2efe9;
+}
+
+.gallery-title {
+  font-family: 'EB Garamond', serif;
+  font-size: 56px;
+  font-weight: 800;
+  line-height: 1;
+  color: #fffef3;
+}
+
+.gallery-grid {
+  margin-top: 40px;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.gallery-card {
+  margin: 0;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 254, 243, 0.12);
+}
+
+.gallery-card img {
+  display: block;
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+}
+
+/* --- RSVP --- */
+.rsvp-section {
+  background: #fcf9f7;
+  padding: 96px 0 80px;
+  border-top: 1px solid rgba(43, 17, 5, 0.06);
+}
+
+.rsvp-inner {
+  max-width: 840px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.rsvp-title {
+  font-family: 'EB Garamond', serif;
+  font-size: 56px;
+  font-weight: 800;
+  line-height: 1;
+  color: #2b1105;
+  text-align: center;
+}
+
+.rsvp-text {
+  margin-top: 12px;
+  font-family: 'EB Garamond', serif;
+  font-size: 24px;
+  font-weight: 400;
+  font-style: normal;
+  line-height: 30px;
+  letter-spacing: 0;
+  text-align: center;
+  color: #000000;
+}
+
+.rsvp-form {
+  margin-top: 48px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.rsvp-field {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.rsvp-field--compact {
+  gap: 8px;
+}
+
+.rsvp-field--drinks {
+  gap: 4px;
+}
+
+.rsvp-field--name {
+  gap: 8px;
+}
+
+.rsvp-field--attending {
+  gap: 16px;
+}
+
+.rsvp-label {
+  font-family: 'EB Garamond', serif;
+  font-size: 18px;
+  font-weight: 500;
+  font-style: normal;
+  line-height: 22px;
+  letter-spacing: 0;
+  color: #08080a;
+}
+
+.rsvp-required {
+  color: #325cc3;
+  margin-left: 2px;
+}
+
+.rsvp-hint {
+  font-family: 'EB Garamond', serif;
+  font-size: 16px;
+  font-weight: 500;
+  font-style: normal;
+  line-height: 20px;
+  letter-spacing: 0;
+  color: #4f515c;
+  opacity: 0.6;
+  margin: 0;
+}
+
+.rsvp-input {
+  width: 100%;
+  padding: 12px 16px;
+  border: 2px solid #dee5e6;
+  border-radius: 8px;
+  background: #ffffff;
+  font-family: 'Poppins', sans-serif;
+  font-size: 15px;
+  color: #2b1105;
+  box-sizing: border-box;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.rsvp-input::placeholder {
+  font-family: 'Helvetica', sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  font-style: normal;
+  line-height: 20px;
+  letter-spacing: 0;
+  color: #9699a8;
+}
+
+.rsvp-input:focus {
+  border-color: #dee5e6;
+}
+
+.rsvp-input--number {
+  width: 100%;
+}
+
+.rsvp-guests-hint {
+  margin-top: calc(4px - 8px);
+  font-family: 'EB Garamond', serif;
+  font-size: 14px;
+  font-weight: 500;
+  font-style: normal;
+  line-height: 20px;
+  letter-spacing: 0;
+  color: #4f515c;
+}
+
+.rsvp-radio-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px 32px;
+}
+
+.rsvp-radio-label,
+.rsvp-check-label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: 'EB Garamond', serif;
+  font-size: 16px;
+  font-weight: 500;
+  font-style: normal;
+  line-height: 20px;
+  letter-spacing: 0;
+  color: #08080a;
+  cursor: pointer;
+}
+
+.rsvp-radio-label input[type="radio"] {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 20px;
+  height: 20px;
+  border: 1px solid #0b5167;
+  border-radius: 50%;
+  background: #ffffff;
+  cursor: pointer;
+  flex-shrink: 0;
+  align-self: center;
+  position: relative;
+  margin: 0;
+}
+
+.rsvp-radio-label input[type="radio"]:checked::after {
+  content: '';
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #0b5167;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.rsvp-check-label input[type="checkbox"] {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 20px;
+  height: 20px;
+  border:2px solid #dee5e6;
+  border-radius: 4px;
+  background: #ffffff;
+  cursor: pointer;
+  flex-shrink: 0;
+  align-self: center;
+  position: relative;
+  margin: 0;
+}
+
+.rsvp-check-label input[type="checkbox"]:checked {
+  background: #0b5167;
+  border-color: #0b5167;
+}
+
+.rsvp-check-label input[type="checkbox"]:checked::after {
+  content: '';
+  position: absolute;
+  width: 5px;
+  height: 9px;
+  border: 2px solid #ffffff;
+  border-top: none;
+  border-left: none;
+  top: 3px;
+  left: 6px;
+  transform: rotate(45deg);
+}
+
+.rsvp-drinks-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px 32px;
+}
+
+.rsvp-submit {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 8px;
+  width: 630px;
+  height: 52px;
+  padding: 10px 24px;
+  gap: 10px;
+  border: none;
+  border-radius: 8px;
+  background: #ff481a;
+  font-family: 'EB Garamond', serif;
+  font-size: 20px;
+  font-weight: 500;
+  font-style: normal;
+  line-height: 32px;
+  letter-spacing: 0;
+  color: #ffffff;
+  cursor: pointer;
+  transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.rsvp-submit:hover {
+  transform: scale(1.05);
+}
+
+.rsvp-success {
+  margin-top: 40px;
+  padding: 32px;
+  border-radius: 12px;
+  text-align: center;
+  font-family: 'EB Garamond', serif;
+  font-size: 20px;
+  color: #2b1105;
+}
+
+.rsvp-error {
+  font-family: 'EB Garamond', serif;
+  font-size: 16px;
+  color: #c0392b;
+  text-align: center;
+  margin: 0;
+}
+
+.rsvp-submit:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+/* --- Footer --- */
+.site-footer {
+  position: relative;
+  background: linear-gradient(162.88deg, #9F6DD4 -0.13%, #5B6AAD 100%);
+  height: 345px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.footer-flower {
+  position: absolute;
+  bottom: 0;
+  height: 100%;
+  z-index: 2;
+  pointer-events: none;
+  user-select: none;
+  color: #9866CA;
+  mix-blend-mode: multiply;
+  opacity: 0.5;
+}
+
+.footer-inner {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.footer-flower--left {
+  left: 0;
+}
+
+.footer-flower--right {
+  right: 0;
+}
+
+.footer-heading {
+  margin: 0;
+  font-family: 'Georgia', serif;
+  font-size: 48px;
+  font-weight: 400;
+  font-style: normal;
+  line-height: 48px;
+  letter-spacing: 0;
+  text-align: center;
+  color: #ffffff;
+}
+
+.footer-countdown {
+  margin-top: 32px;
+  display: flex;
+  gap: 40px;
+  padding: 24px 48px;
+}
+
+.footer-countdown-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 7px;
+  min-width: 64px;
+}
+
+.footer-countdown-num {
+  font-family: 'Inter', sans-serif;
+  font-size: 48px;
+  font-weight: 700;
+  font-style: normal;
+  line-height: 48px;
+  letter-spacing: 0.35px;
+  text-align: center;
+  color: #ffffff;
+}
+
+.footer-countdown-label {
+  font-family: 'Inter', sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  font-style: normal;
+  line-height: 24px;
+  letter-spacing: -0.31px;
+  text-align: center;
+  color: #ffffff;
+}
+
+/* ===================== TABLET (≤1100px) ===================== */
+@media (max-width: 1100px) {
+  .welcome-section {
+    position: relative;
+    overflow: hidden;
+    min-height: 100svh;
+    display: flex;
+    align-items: center;
+    padding: 48px 0;
+    box-sizing: border-box;
+  }
+
+  .page-inner {
+    padding-left: 40px;
+    padding-right: 40px;
+  }
+
+  /* Hero */
+  .hero-names {
+    font-size: clamp(120px, 15vw, 160px);
+    line-height: 0.88;
+    letter-spacing: -0.05em;
+  }
+
+  .hero-date {
+    margin-top: 20px;
+    font-size: clamp(64px, 8vw, 84px);
+    line-height: 1;
+  }
+
+  .hero-section::before {
+    height: 220px;
+  }
+
+  /* Welcome */
+  .welcome-grid {
+    position: relative;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto auto;
+    width: 100%;
+  }
+
+  .welcome-title {
+    grid-area: 1 / 1;
+    font-size: 68px;
+    line-height: 76px;
+    text-align: center;
+  }
+
+  .welcome-photo-wrap {
+    grid-area: 2 / 1;
+    padding: 16px;
+    display: flex;
+    justify-content: center;
+  }
+
+  .welcome-content {
+    grid-area: 3 / 1;
+    margin-top: 55px;
+    gap: 16px;
+    padding: 0 0 40px;
+  }
+
+  .welcome-heading {
+    font-size: clamp(36px, 9vw, 48px);
+    line-height: 1;
+    font-weight: 500;
+    letter-spacing: 0;
+    text-align: center;
+    white-space: nowrap;
+  }
+
+  .welcome-text {
+    font-size: 24px;
+    line-height: 1.2;
+    font-weight: 400;
+    letter-spacing: 0;
+    text-align: center;
+  }
+
+  .welcome-text--desktop {
+    display: none;
+  }
+
+  .welcome-text--mobile {
+    display: block;
+  }
+
+  .welcome-photo {
+    width: 75%;
+  }
+
+  .welcome-flowers {
+    position: absolute;
+    right: -60px;
+    bottom: -110px;
+    width: min(78vw, 520px);
+    max-width: none;
+    margin-top: 0;
+    opacity: 0.3;
+    z-index: 0;
+    pointer-events: none;
+  }
+
+  .welcome-title,
+  .welcome-photo-wrap,
+  .welcome-content {
+    position: relative;
+    z-index: 1;
+  }
+
+  /* Location */
+  .location-section {
+    min-height: unset;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 24px 0 40px;
+  }
+
+  .location-inner {
+    grid-template-columns: 1fr;
+    justify-items: stretch;
+    gap: 24px;
+    max-width: 760px;
+    margin: 0 auto;
+    width: 100%;
+  }
+
+  .location-copy {
+    width: 100%;
+    max-width: 760px;
+  }
+
+  .location-title {
+    font-size: 48px;
+    line-height: 1;
+    letter-spacing: 0;
+  }
+
+  .location-venue {
+    margin-top: 24px;
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 1.2;
+    letter-spacing: 0;
+    text-align: left;
+    white-space: pre-line;
+  }
+
+  .location-venue--desktop {
+    display: none;
+  }
+
+  .location-venue--mobile {
+    display: block;
+  }
+
+  .location-map {
+    width: 100%;
+    max-width: 760px;
+    margin: 0;
+    justify-self: start;
+  }
+
+  .schedule-section {
+    padding-top: 36px;
+  }
+
+  .calendar-inner {
+    width: 100%;
+  }
+
+  .calendar-grid {
+    width: 100%;
+    max-width: 760px;
+    grid-template-columns: repeat(7, minmax(0, 1fr));
+    gap: 6px;
+  }
+
+  .calendar-day {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1 / 1;
+    font-size: clamp(18px, 2.6vw, 24px);
+    line-height: 1;
+  }
+
+  .calendar-day__marker {
+    width: 100%;
+    height: 100%;
+  }
+
+  .calendar-day__marker-num {
+    font-size: clamp(20px, 2.8vw, 28px);
+  }
+
+  .calendar-label {
+    margin-top: 42px;
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 24px;
+    letter-spacing: 0;
+    text-align: center;
+  }
+
+  /* Gallery */
+  .gallery-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  /* Titles */
+  .schedule-day h3,
+  .schedule-title,
+  .story-title,
+  .location-title,
+  .dress-title,
+  .gallery-title,
+  .rsvp-title {
+    font-size: 48px;
+  }
+
+  .schedule-item span {
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 32px;
+    letter-spacing: 0;
+  }
+
+  .schedule-item p {
+    font-size: 24px;
+    font-weight: 500;
+    line-height: 28px;
+    letter-spacing: 0;
+  }
+
+  .schedule-item small {
+    margin-top: 8px;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 22px;
+    letter-spacing: 0;
+  }
+
+  .schedule-list {
+    gap: 24px;
+  }
+
+  .schedule-flower {
+    display: block;
+    z-index: 0;
+    height: 68%;
+  }
+
+  .schedule-flower--left {
+    left: -96px;
+    top: 0;
+  }
+
+  .schedule-flower--right {
+    right: -96px;
+    bottom: 0;
+  }
+
+  .schedule-day + .schedule-day {
+    margin-top: 24px;
+  }
+
+  .schedule-day-label {
+    margin: 0 0 24px;
+  }
+
+  .schedule-day {
+    margin-top: 24px;
+  }
+
+  .dress-swatch {
+    width: 40px;
+    height: 40px;
+  }
+
+  /* RSVP */
+  .rsvp-submit {
+    width: 100%;
+  }
+
+  .rsvp-form {
+    margin-top: 32px;
+  }
+
+  /* Footer */
+  .footer-flower {
+    height: 60%;
+    opacity: 0.35;
+    z-index: 0;
+  }
+
+  .footer-countdown {
+    gap: 24px;
+    padding: 16px 24px;
+  }
+}
+
+/* ===================== MOBILE (≤760px) ===================== */
+@media (max-width: 760px) {
+  .page-inner {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  /* Hero */
+  .hero-section {
+    height: auto;
+    min-height: 100svh;
+  }
+
+  .hero-section::before {
+    height: 180px;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+  }
+
+  .hero-content {
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 24px;
+    box-sizing: border-box;
+  }
+
+  .hero-names {
+    align-items: flex-start;
+    width: fit-content;
+    margin: 0 auto;
+    font-size: clamp(78px, 19vw, 112px);
+    line-height: 0.9;
+    letter-spacing: -0.045em;
+  }
+
+  .hero-names-second {
+    padding-left: 1.15em;
+  }
+
+  .hero-date {
+    margin-top: 28px;
+    font-size: clamp(52px, 11vw, 72px);
+    line-height: 1;
+  }
+
+  /* Welcome */
+  .welcome-section {
+    min-height: 100svh;
+    padding: 32px 0;
+  }
+
+  .welcome-title {
+    font-family: 'Boska', serif;
+    font-weight: 400;
+    font-style: italic;
+    font-size: 64px;
+    line-height: 80px;
+    letter-spacing: -0.04em;
+    text-align: center;
+    color: #413300;
+    padding-bottom: 32px;
+  }
+
+  .welcome-heading {
+    font-size: 48px;
+    line-height: 1;
+    font-weight: 500;
+    letter-spacing: 0;
+    text-align: center;
+  }
+
+  .welcome-text {
+    font-size: 24px;
+    line-height: 1.2;
+    font-weight: 400;
+    letter-spacing: 0;
+    text-align: left;
+    white-space: pre-line;
+  }
+
+  .welcome-photo-wrap {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 0;
+    background: none;
+    box-shadow: none;
+    transform: none;
+    width: auto;
+    margin-top: -80px;
+  }
+
+  .welcome-photo {
+    width: 80%;
+    height: auto;
+    align-self: flex-start;
+  }
+
+  .welcome-content {
+    text-align: center;
+    margin-top: 55px;
+    gap: 16px;
+    padding: 24px 0 32px;
+  }
+
+  .welcome-flowers {
+    right: -200px;
+    bottom: -180px;
+    width: 104vw;
+    max-width: 520px;
+  }
+
+  /* Location */
+  .location-section {
+    padding: 24px 0 40px;
+    min-height: unset;
+  }
+
+  .location-inner {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 24px;
+  }
+
+  .location-copy {
+    width: 100%;
+  }
+
+  .location-title {
+    font-size: 48px;
+    line-height: 1;
+  }
+
+  .location-venue {
+    width: 100%;
+    margin-top: 24px;
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 1.2;
+    letter-spacing: 0;
+    text-align: left;
+  }
+
+  .location-address {
+    font-size: 16px;
+    line-height: 1.4;
+    align-items: flex-start;
+  }
+
+  .location-map-btn.location-map-btn--desktop {
+    display: none;
+  }
+
+  .location-map-btn.location-map-btn--mobile {
+    display: flex;
+    width: 100%;
+    box-sizing: border-box;
+    margin-top: 16px;
+  }
+
+  .location-map {
+    width: 100%;
+    height: 220px;
+  }
+
+  .location-map iframe {
+    width: 100% !important;
+    height: 100%;
+  }
+
+  /* Section paddings */
+  .story-section,
+  .schedule-section,
+  .dress-section,
+  .gallery-section,
+  .rsvp-section {
+    padding: 56px 0;
+  }
+
+  .schedule-section {
+    padding-top: 28px;
+  }
+
+  /* Titles */
+  .schedule-day h3,
+  .schedule-title,
+  .story-title,
+  .location-title,
+  .dress-title,
+  .gallery-title,
+  .rsvp-title {
+    font-size: 36px;
+  }
+
+  /* Schedule */
+  .schedule-flower {
+    display: block;
+    z-index: 0;
+    height: 62%;
+  }
+
+  .schedule-flower--left {
+    left: -120px;
+    top: 0;
+  }
+
+  .schedule-flower--right {
+    right: -120px;
+    bottom: 0;
+  }
+
+  .schedule-day {
+    margin-top: 24px;
+  }
+
+  .schedule-day-label {
+    margin: 0 0 24px;
+  }
+
+  .schedule-item {
+    grid-template-columns: 56px 1fr;
+    gap: 12px;
+    margin-top: 0;
+  }
+
+  .schedule-item span {
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 32px;
+    letter-spacing: 0;
+  }
+
+  .schedule-item p {
+    font-size: 24px;
+    font-weight: 500;
+    line-height: 28px;
+    letter-spacing: 0;
+  }
+
+  .schedule-item small {
+    margin-top: 8px;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 22px;
+    letter-spacing: 0;
+  }
+
+  /* Calendar */
+  .calendar-grid {
+    width: 100%;
+    max-width: none;
+    grid-template-columns: repeat(7, minmax(0, 1fr));
+    gap: 4px;
+  }
+
+  .calendar-day {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1 / 1;
+    font-size: clamp(16px, 4.6vw, 22px);
+    line-height: 1;
+  }
+
+  .calendar-day__marker {
+    width: 100%;
+    height: 100%;
+  }
+
+  .calendar-day__marker-num {
+    font-size: clamp(18px, 4.8vw, 24px);
+  }
+
+  .calendar-month,
+  .calendar-year {
+    font-size: 24px;
+  }
+
+  /* DressCode */
+  .dress-swatch {
+    width: 40px;
+    height: 40px;
+  }
+
+  .dress-text {
+    font-size: 18px;
+  }
+
+  /* Venue photos */
+  .venue-photos-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  /* Gallery */
+  .gallery-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+  }
+
+  .gallery-card img {
+    height: 200px;
+  }
+
+  /* RSVP */
+  .rsvp-section {
+    padding: 56px 0 56px;
+  }
+
+  .rsvp-inner {
+    max-width: 100%;
+  }
+
+  .rsvp-submit {
+    width: 100%;
+  }
+
+  .rsvp-form {
+    margin-top: 24px;
+  }
+
+  .rsvp-drinks-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px 16px;
+  }
+
+  /* RSVP text */
+  .rsvp-text {
+    font-size: 18px;
+    line-height: 24px;
+  }
+
+  /* Footer */
+  .site-footer {
+    height: auto;
+    padding: 34px 20px;
+  }
+
+  .footer-flower {
+    display: block;
+    height: 75%;
+    opacity: 0.3;
+    z-index: 0;
+  }
+
+  .footer-flower--left {
+    left: -28px;
+  }
+
+  .footer-flower--right {
+    right: -28px;
+  }
+
+  .footer-heading {
+    font-size: 32px;
+    line-height: 36px;
+  }
+
+  .footer-countdown {
+    gap: 16px;
+    padding: 8px 0;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .footer-countdown-num {
+    font-size: 36px;
+    line-height: 36px;
+  }
+
+  .footer-countdown-label {
+    font-size: 14px;
+  }
+
+  .footer-countdown-item {
+    min-width: 56px;
+  }
+}
+
+/* ===================== SMALL MOBILE (≤480px) ===================== */
+@media (max-width: 480px) {
+  .hero-content {
+    padding: 16px;
+  }
+
+  .hero-names {
+    font-size: clamp(66px, 21vw, 90px);
+    line-height: 0.9;
+  }
+
+  .hero-date {
+    font-size: clamp(44px, 13vw, 58px);
+    letter-spacing: -0.01em;
+  }
+
+  .welcome-title {
+    font-size: 56px;
+    line-height: 70px;
+    text-align: center;
+  }
+
+  .welcome-photo {
+    width: 220px;
+    height: auto;
+  }
+
+  .schedule-day h3,
+  .schedule-title,
+  .story-title,
+  .location-title,
+  .dress-title,
+  .gallery-title,
+  .rsvp-title {
+    font-size: 30px;
+  }
+
+  .calendar-grid {
+    gap: 3px;
+  }
+
+  .footer-countdown {
+    gap: 12px;
+  }
+
+  .footer-countdown-num {
+    font-size: 30px;
+  }
+}
