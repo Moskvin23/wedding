@@ -1,5 +1,4 @@
 import useScrollReveal from '../hooks/useScrollReveal'
-import locationIcon from '../assets/location.png'
 
 function LocationSection({ location }) {
   const ref = useScrollReveal()
@@ -13,10 +12,7 @@ function LocationSection({ location }) {
           <p className="location-venue location-venue--mobile">
             {location.venueMobile || location.venue}
           </p>
-          <p className="location-address">
-            <img className="location-icon" src={locationIcon} alt="" aria-hidden="true" />
-            {location.address}
-          </p>
+          <p className="location-venue">{location.address}</p>
           <a className="location-map-btn location-map-btn--desktop" href={location.mapUrl} target="_blank" rel="noreferrer">
             {location.mapLabel}
           </a>

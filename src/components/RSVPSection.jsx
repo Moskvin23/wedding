@@ -1,18 +1,12 @@
 import { useState } from 'react'
 
-const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbywcZhVj86wKzalrfh1qlLPA1OdZP6vPtvyVlNH8lA-wbheuuUgw1mJE_ry9RS6wL03/exec'
+const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzJrRcDh-KPSYcr8YRCpNx5B1yihk9h4FytGkSP5Cr6cxB2WVsdOl3mhTtUfumeENP4/exec'
 
 const DRINKS = [
-  'Біле вино',
-  'Віскі',
-  'Червоне вино',
-  'Коньяк',
-  'Шампанське',
-  'Ром',
-  'Пиво',
-  'Джин',
-  'Горілка',
   'Безалкогольні напої',
+  'Пиво',
+  'Вино (біле/червоне/ігристе)',
+  'Міцний алкоголь (віскі/джин/ром/інше)',
 ]
 
 function RSVPSection({ rsvp }) {
@@ -23,7 +17,6 @@ function RSVPSection({ rsvp }) {
     drinks: [],
     transport: 'no',
     overnight: 'no',
-    secondDay: 'no',
   })
   const [submitted, setSubmitted] = useState(false)
   const [loading, setLoading] = useState(false)
@@ -50,7 +43,7 @@ function RSVPSection({ rsvp }) {
         body: JSON.stringify(form),
       })
       setSubmitted(true)
-    } catch (err) {
+    } catch {
       setError('Щось пішло не так. Спробуйте ще раз.')
     } finally {
       setLoading(false)
@@ -77,23 +70,9 @@ function RSVPSection({ rsvp }) {
         <p className="rsvp-text">{rsvp.text}</p>
 
         <form className="rsvp-form" onSubmit={handleSubmit}>
-          <div className="rsvp-field rsvp-field--name">
-            <label className="rsvp-label">
-              Ваше ім'я <span className="rsvp-required">*</span>
-            </label>
-            <input
-              className="rsvp-input"
-              type="text"
-              required
-              placeholder="Введіть ваше повне ім'я"
-              value={form.name}
-              onChange={(e) => setForm({ ...form, name: e.target.value })}
-            />
-          </div>
-
           <div className="rsvp-field rsvp-field--attending">
             <label className="rsvp-label">
-              Чи будете присутні? <span className="rsvp-required">*</span>
+              Чи будете ви присутні? <span className="rsvp-required">*</span>
             </label>
             <div className="rsvp-radio-group">
               <label className="rsvp-radio-label">
@@ -104,7 +83,7 @@ function RSVPSection({ rsvp }) {
                   checked={form.attending === 'yes'}
                   onChange={() => setForm({ ...form, attending: 'yes' })}
                 />
-                Так, і радісно буду!
+               Так, з радістю буду
               </label>
               <label className="rsvp-radio-label">
                 <input
@@ -121,7 +100,7 @@ function RSVPSection({ rsvp }) {
 
           <div className="rsvp-field rsvp-field--compact">
             <label className="rsvp-label">
-              Кількість гостей <span className="rsvp-required">*</span>
+            Кількість гостей (включаючи вас)  <span className="rsvp-required">*</span>
             </label>
             <input
               className="rsvp-input rsvp-input--number"
@@ -135,14 +114,27 @@ function RSVPSection({ rsvp }) {
                 setForm({ ...form, guests: isNaN(val) || val < 1 ? 1 : val > 10 ? 10 : val })
               }}
             />
-            <p className="rsvp-guests-hint">Включаючи вас</p>
+          </div>
+
+          <div className="rsvp-field rsvp-field--name">
+            <label className="rsvp-label">
+              Ім’я та прізвище <span className="rsvp-required">*</span>
+            </label>
+            <input
+              className="rsvp-input"
+              type="text"
+              required
+              placeholder="Ведіть повні імена всіх гостей"
+              value={form.name}
+              onChange={(e) => setForm({ ...form, name: e.target.value })}
+            />
           </div>
 
           <div className="rsvp-field rsvp-field--drinks">
             <label className="rsvp-label">
-              Які маєте побажання до напоїв? <span className="rsvp-required">*</span>
+              Які ваші вподобання до напоїв? <span className="rsvp-required">*</span>
             </label>
-            <p className="rsvp-hint">Можна обрати кілька варіантів</p>
+            <p className="rsvp-hint">Можна обрати декілька варіантів</p>
             <div className="rsvp-drinks-grid">
               {DRINKS.map((drink) => (
                 <label key={drink} className="rsvp-check-label">
@@ -159,7 +151,7 @@ function RSVPSection({ rsvp }) {
 
           <div className="rsvp-field">
             <label className="rsvp-label">
-              Чи потрібно допомогти з добиранням від Львова до локації?{' '}
+              Чи потрібна допомога з добиранням зі Львова до локації?{' '}
               <span className="rsvp-required">*</span>
             </label>
             <div className="rsvp-radio-group">
@@ -171,7 +163,7 @@ function RSVPSection({ rsvp }) {
                   checked={form.transport === 'yes'}
                   onChange={() => setForm({ ...form, transport: 'yes' })}
                 />
-                Так, потрібно
+                Так, потрібна
               </label>
               <label className="rsvp-radio-label">
                 <input
@@ -188,7 +180,7 @@ function RSVPSection({ rsvp }) {
 
           <div className="rsvp-field">
             <label className="rsvp-label">
-              Чи бажаєте залишитись на ніч у локації?{' '}
+              Чи бажаєте залишитися на ніч у локації?{' '}
               <span className="rsvp-required">*</span>
             </label>
             <div className="rsvp-radio-group">
@@ -209,35 +201,6 @@ function RSVPSection({ rsvp }) {
                   value="no"
                   checked={form.overnight === 'no'}
                   onChange={() => setForm({ ...form, overnight: 'no' })}
-                />
-                Ні, дякую
-              </label>
-            </div>
-          </div>
-
-          <div className="rsvp-field">
-            <label className="rsvp-label">
-              Чи бажаєте провести з нами другий день святкування?{' '}
-              <span className="rsvp-required">*</span>
-            </label>
-            <div className="rsvp-radio-group">
-              <label className="rsvp-radio-label">
-                <input
-                  type="radio"
-                  name="secondDay"
-                  value="yes"
-                  checked={form.secondDay === 'yes'}
-                  onChange={() => setForm({ ...form, secondDay: 'yes' })}
-                />
-                Так, хочу залишитись
-              </label>
-              <label className="rsvp-radio-label">
-                <input
-                  type="radio"
-                  name="secondDay"
-                  value="no"
-                  checked={form.secondDay === 'no'}
-                  onChange={() => setForm({ ...form, secondDay: 'no' })}
                 />
                 Ні, дякую
               </label>

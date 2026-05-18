@@ -43,7 +43,7 @@ function FooterSection({ footer }) {
       <img className="footer-flower footer-flower--left" src={flowerLeft} alt="" aria-hidden="true" />
       <img className="footer-flower footer-flower--right" src={flowerRight} alt="" aria-hidden="true" />
       <div className="page-inner footer-inner">
-        <p className="footer-heading">Чекаємо на вас через</p>
+        <p className="footer-heading">Чекаємо на вас через🤍</p>
         <div className="footer-countdown">
           <div className="footer-countdown-item">
             <span className="footer-countdown-num">{days}</span>

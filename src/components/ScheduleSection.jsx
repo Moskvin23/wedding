@@ -4,7 +4,7 @@ import flowerLeft from '../assets/flower 9.png'
 import flowerRight from '../assets/Flower (2).png'
 
 function ScheduleSection({ schedule }) {
-  const ref = useScrollReveal({ outFactor: 2.5 })
+  const ref = useScrollReveal({ outFactor: 2.5, fade: false })
   const adaptiveQuery = '(max-width: 1100px)'
   const [isAdaptive, setIsAdaptive] = useState(() =>
     typeof window !== 'undefined' && window.matchMedia(adaptiveQuery).matches

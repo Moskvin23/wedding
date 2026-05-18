@@ -1,7 +1,7 @@
 import useScrollReveal from '../hooks/useScrollReveal'
 
 function DressCodeSection({ dressCode }) {
-  const ref = useScrollReveal()
+  const ref = useScrollReveal({ fade: false })
 
   return (
     <section className="dress-section">

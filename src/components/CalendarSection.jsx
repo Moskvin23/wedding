@@ -15,7 +15,7 @@ function CalendarSection() {
     <section className="calendar-section">
       <div className="page-inner calendar-inner" ref={ref}>
         <div className="calendar-header">
-          <span className="calendar-month">Серпень</span>
+          <span className="calendar-month">23 Серпня</span>
         </div>
 
         <div className="calendar-grid">
@@ -34,7 +34,7 @@ function CalendarSection() {
           ))}
         </div>
 
-        <p className="calendar-label">Просимо залишити цей день для нас - обіцяємо тепло, щирість та особливу атмосферу</p>
+        <p className="calendar-label">Просимо залишити цей день для нас - обіцяємо тепло, щирість та особливу атмосферу!</p>
       </div>
     </section>
   )
