@@ -14,8 +14,7 @@ import './App.css'
 function App() {
   useFormFocusLock()
 
-  const { hero, welcome, location, schedule, dressCode, rsvp, footer } =
-    invitationData
+  const { welcome, location, schedule, dressCode, rsvp, footer } = invitationData
 
   return (
     <main className="invitation-app">

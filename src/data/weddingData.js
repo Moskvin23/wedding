@@ -1,16 +1,6 @@
-import coupleMain from '../assets/figma/couple-main.jpg'
-import coupleCrop from '../assets/figma/couple-crop.jpg'
-import heroTexture from '../assets/figma/hero-texture.jpg'
 import welcomeVideo from '../assets/IMG_5952.mp4'
 
 export const invitationData = {
-  hero: {
-    firstName: 'Pavlo',
-    secondName: 'Alona',
-    date: '23.08.2026',
-    /** Grain-текстура з Figma (s3 img/0bfc/2781…), поверх рожевого градієнта — як у node 31-8029 */
-    texture: heroTexture,
-  },
   welcome: {
     title: 'Welcome to\nour wedding',
     subtitle: 'Тепер ми родина!',
@@ -18,13 +8,6 @@ export const invitationData = {
     textMobile:
       'З любовʼю та нетерпінням\nзапрошуємо вас розділити радість\nнашого весільного дня та бути поруч\nв цей момент',
     photo: welcomeVideo,
-  },
-  story: {
-    kicker: 'Про нас',
-    title: 'Наша історія',
-    lead: 'Все почалося з простої зустрічі — і виросло у спільне життя.',
-    body:
-      'Ми дуже чекаємо на цей день і хочемо розділити його з людьми, які для нас важливі. Дякуємо, що ви поруч.',
   },
   location: {
     kicker: 'Де будемо святкувати',
@@ -107,14 +90,6 @@ export const invitationData = {
         label: 'Для чоловіків — класичну чорно-білу палітру',
         colors: ['#1F1F1F', '#3A3A3A', '#7A7A7A', '#CFCFCF', '#F1F1F1'],
       },
-    ],
-  },
-  gallery: {
-    title: 'Моменти',
-    items: [
-      { src: coupleMain, alt: 'Фото 1' },
-      { src: coupleCrop, alt: 'Фото 2' },
-      { src: coupleMain, alt: 'Фото 3' },
     ],
   },
   rsvp: {
