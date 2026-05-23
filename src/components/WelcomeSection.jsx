@@ -1,18 +1,27 @@
 import { useEffect, useRef, useState } from 'react'
 import welcomeFlowers from '../assets/figma/flower 4.png'
 
+function isVideoFullyLoaded(video) {
+  if (!video || video.readyState < HTMLMediaElement.HAVE_ENOUGH_DATA) return false
+
+  const { duration, buffered } = video
+  if (!Number.isFinite(duration) || duration <= 0 || buffered.length === 0) return false
+
+  return buffered.end(buffered.length - 1) >= duration - 0.05
+}
+
 function WelcomeSection({ welcome }) {
   const videoRef = useRef(null)
   const [isVideoLoading, setIsVideoLoading] = useState(true)
 
-  useEffect(() => {
+  const tryHideLoader = () => {
     const video = videoRef.current
-    if (video && video.readyState >= 3) setIsVideoLoading(false)
-  }, [])
-
-  const handleVideoReady = () => {
-    setIsVideoLoading(false)
+    if (video && isVideoFullyLoaded(video)) setIsVideoLoading(false)
   }
+
+  useEffect(() => {
+    tryHideLoader()
+  }, [])
 
   return (
     <section className="welcome-section">
@@ -35,9 +44,9 @@ function WelcomeSection({ welcome }) {
               loop
               playsInline
               aria-label="Pavlo та Alona"
-              onLoadedData={handleVideoReady}
-              onCanPlay={handleVideoReady}
-              onPlaying={handleVideoReady}
+              onLoadedMetadata={tryHideLoader}
+              onProgress={tryHideLoader}
+              onCanPlayThrough={tryHideLoader}
             />
           </div>
         </div>
