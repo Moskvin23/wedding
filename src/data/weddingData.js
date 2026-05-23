@@ -1,7 +1,7 @@
 import coupleMain from '../assets/figma/couple-main.jpg'
 import coupleCrop from '../assets/figma/couple-crop.jpg'
 import heroTexture from '../assets/figma/hero-texture.jpg'
-import welcomeVideo from '../assets/video.mov'
+import welcomeVideo from '../assets/IMG_5952.mp4'
 
 export const invitationData = {
   hero: {
