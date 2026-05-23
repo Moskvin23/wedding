@@ -1,4 +1,3 @@
-import useScrollReveal from '../hooks/useScrollReveal'
 import venueForest from '../assets/venue-forest.png'
 import venueLake from '../assets/venue-lake.png'
 import venueEvening from '../assets/venue-evening.png'
@@ -12,11 +11,9 @@ const photos = [
 ]
 
 function VenuePhotosSection() {
-  const ref = useScrollReveal({ translate: false })
-
   return (
     <section className="venue-photos-section">
-      <div className="venue-photos-grid" ref={ref}>
+      <div className="venue-photos-grid">
         {photos.map((photo, i) => (
           <div key={i} className="venue-photo-wrap">
             <img className="venue-photo" src={photo.src} alt={photo.alt} />

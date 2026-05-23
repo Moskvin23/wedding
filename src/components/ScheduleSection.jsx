@@ -1,10 +1,8 @@
 import { useEffect, useState } from 'react'
-import useScrollReveal from '../hooks/useScrollReveal'
 import flowerLeft from '../assets/flower 9.png'
 import flowerRight from '../assets/Flower (2).png'
 
 function ScheduleSection({ schedule }) {
-  const ref = useScrollReveal({ outFactor: 2.5, fade: false })
   const adaptiveQuery = '(max-width: 1100px)'
   const [isAdaptive, setIsAdaptive] = useState(() =>
     typeof window !== 'undefined' && window.matchMedia(adaptiveQuery).matches
@@ -34,7 +32,7 @@ function ScheduleSection({ schedule }) {
     <section className="schedule-section">
       <img className="schedule-flower schedule-flower--left" src={flowerLeft} alt="" aria-hidden="true" />
       <img className="schedule-flower schedule-flower--right" src={flowerRight} alt="" aria-hidden="true" />
-      <div className="page-inner" ref={ref}>
+      <div className="page-inner">
         <h2 className="schedule-title">{schedule.title}</h2>
         {schedule.days.map((day, index) => (
           <div key={day.label} className="schedule-day">

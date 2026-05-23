@@ -1,11 +1,7 @@
-import useScrollReveal from '../hooks/useScrollReveal'
-
 function DressCodeSection({ dressCode }) {
-  const ref = useScrollReveal({ fade: false })
-
   return (
     <section className="dress-section">
-      <div className="page-inner dress-inner" ref={ref}>
+      <div className="page-inner dress-inner">
         <h2 className="dress-title">{dressCode.title}</h2>
         <p className="dress-text">{dressCode.text}</p>
         <div className="dress-palette">

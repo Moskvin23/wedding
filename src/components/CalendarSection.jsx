@@ -1,8 +1,6 @@
-import useScrollReveal from '../hooks/useScrollReveal'
 import calendarMarker from '../assets/calendar-marker.svg'
 
 function CalendarSection() {
-  const ref = useScrollReveal()
   const startOffset = 5
   const totalDays = 30
   const weddingDay = 23
@@ -13,7 +11,7 @@ function CalendarSection() {
 
   return (
     <section className="calendar-section">
-      <div className="page-inner calendar-inner" ref={ref}>
+      <div className="page-inner calendar-inner">
         <div className="calendar-header">
           <span className="calendar-month">23 Серпня</span>
         </div>

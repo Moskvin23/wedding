@@ -1,21 +1,29 @@
 import { useEffect, useRef } from 'react'
 import heroFlower from '../assets/hero-flower.svg'
+import { isFormControlFocused } from '../hooks/useFormFocusLock'
 
 function HeroSection() {
   const contentRef = useRef(null)
 
   useEffect(() => {
     const handleScroll = () => {
-      const progress = Math.min(window.scrollY / (window.innerHeight * 0.8), 1)
-      const maxTranslate = Math.min(window.innerHeight * 0.42, 422)
+      if (isFormControlFocused()) return
+
+      const vh = window.visualViewport?.height ?? window.innerHeight
+      const progress = Math.min(window.scrollY / (vh * 0.8), 1)
+      const maxTranslate = Math.min(vh * 0.42, 422)
       if (contentRef.current) {
-        contentRef.current.style.opacity = 1 - progress
         contentRef.current.style.transform = `translateY(${-progress * maxTranslate}px)`
       }
     }
 
+    handleScroll()
     window.addEventListener('scroll', handleScroll, { passive: true })
-    return () => window.removeEventListener('scroll', handleScroll)
+    window.visualViewport?.addEventListener('resize', handleScroll)
+    return () => {
+      window.removeEventListener('scroll', handleScroll)
+      window.visualViewport?.removeEventListener('resize', handleScroll)
+    }
   }, [])
 
   return (

@@ -1,11 +1,7 @@
-import useScrollReveal from '../hooks/useScrollReveal'
-
 function LocationSection({ location }) {
-  const ref = useScrollReveal()
-
   return (
     <section className="location-section">
-      <div className="page-inner location-inner" ref={ref}>
+      <div className="page-inner location-inner">
         <div className="location-copy">
           <h2 className="location-title">{location.title}</h2>
           <p className="location-venue location-venue--desktop">{location.venue}</p>

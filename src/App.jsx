@@ -8,9 +8,12 @@ import DressCodeSection from './components/DressCodeSection'
 import RSVPSection from './components/RSVPSection'
 import FooterSection from './components/FooterSection'
 import { invitationData } from './data/weddingData'
+import useFormFocusLock from './hooks/useFormFocusLock'
 import './App.css'
 
 function App() {
+  useFormFocusLock()
+
   const { hero, welcome, location, schedule, dressCode, rsvp, footer } =
     invitationData
 

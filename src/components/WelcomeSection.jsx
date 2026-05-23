@@ -1,9 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
-import useScrollReveal from '../hooks/useScrollReveal'
 import welcomeFlowers from '../assets/figma/flower 4.png'
 
 function WelcomeSection({ welcome }) {
-  const ref = useScrollReveal()
   const videoRef = useRef(null)
   const [isVideoLoading, setIsVideoLoading] = useState(true)
 
@@ -18,7 +16,7 @@ function WelcomeSection({ welcome }) {
 
   return (
     <section className="welcome-section">
-      <div className="page-inner welcome-grid" ref={ref}>
+      <div className="page-inner welcome-grid">
         <h2 className="welcome-title">{welcome.title}</h2>
 
         <div className="welcome-photo-wrap">
