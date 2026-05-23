@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useRef, useState } from 'react'
 
 const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzJrRcDh-KPSYcr8YRCpNx5B1yihk9h4FytGkSP5Cr6cxB2WVsdOl3mhTtUfumeENP4/exec'
 
@@ -15,12 +15,21 @@ function RSVPSection({ rsvp }) {
     attending: 'yes',
     guests: 1,
     drinks: [],
+    menuPreferences: '',
     transport: 'no',
     overnight: 'no',
   })
   const [submitted, setSubmitted] = useState(false)
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState(null)
+  const nameRef = useRef(null)
+
+  const resizeNameField = () => {
+    const field = nameRef.current
+    if (!field) return
+    field.style.height = 'auto'
+    field.style.height = `${field.scrollHeight}px`
+  }
 
   const handleDrinkToggle = (drink) => {
     setForm((prev) => ({
@@ -31,8 +40,11 @@ function RSVPSection({ rsvp }) {
     }))
   }
 
-  const handleSubmit = async (e) => {
-    e.preventDefault()
+  const preventEnterSubmit = (e) => {
+    if (e.key === 'Enter' && e.target.tagName !== 'TEXTAREA') e.preventDefault()
+  }
+
+  const handleSubmit = async () => {
     setLoading(true)
     setError(null)
     try {
@@ -69,7 +81,11 @@ function RSVPSection({ rsvp }) {
         <h2 className="rsvp-title">{rsvp.title}</h2>
         <p className="rsvp-text">{rsvp.text}</p>
 
-        <form className="rsvp-form" onSubmit={handleSubmit}>
+        <form
+          className="rsvp-form"
+          onSubmit={(e) => e.preventDefault()}
+          onKeyDown={preventEnterSubmit}
+        >
           <div className="rsvp-field rsvp-field--attending">
             <label className="rsvp-label">
               Чи будете ви присутні? <span className="rsvp-required">*</span>
@@ -120,13 +136,22 @@ function RSVPSection({ rsvp }) {
             <label className="rsvp-label">
               Ім’я та прізвище <span className="rsvp-required">*</span>
             </label>
-            <input
-              className="rsvp-input"
-              type="text"
+            <textarea
+              ref={nameRef}
+              className="rsvp-input rsvp-input--multiline"
               required
+              rows={1}
               placeholder="Ведіть повні імена всіх гостей"
               value={form.name}
-              onChange={(e) => setForm({ ...form, name: e.target.value })}
+              onChange={(e) => {
+                setForm({ ...form, name: e.target.value })
+                resizeNameField()
+              }}
+              onKeyDown={(e) => {
+                if (e.key === 'Enter') {
+                  requestAnimationFrame(resizeNameField)
+                }
+              }}
             />
           </div>
 
@@ -147,6 +172,19 @@ function RSVPSection({ rsvp }) {
                 </label>
               ))}
             </div>
+          </div>
+
+          <div className="rsvp-field rsvp-field--compact">
+            <label className="rsvp-label">
+              Чи є у вас особливі побажання щодо меню?
+            </label>
+            <textarea
+              className="rsvp-input rsvp-input--menu"
+              rows={3}
+              placeholder="Алергії, дієтичні обмеження або продукти, які ви не вживаєте"
+              value={form.menuPreferences}
+              onChange={(e) => setForm({ ...form, menuPreferences: e.target.value })}
+            />
           </div>
 
           <div className="rsvp-field">
@@ -208,7 +246,7 @@ function RSVPSection({ rsvp }) {
           </div>
 
           {error && <p className="rsvp-error">{error}</p>}
-          <button type="submit" className="rsvp-submit" disabled={loading}>
+          <button type="button" className="rsvp-submit" disabled={loading} onClick={handleSubmit}>
             {loading ? 'Надсилаємо...' : 'Надіслати'}
           </button>
         </form>

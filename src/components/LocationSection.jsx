@@ -12,7 +12,9 @@ function LocationSection({ location }) {
           <p className="location-venue location-venue--mobile">
             {location.venueMobile || location.venue}
           </p>
-          <p className="location-venue">{location.address}</p>
+          {location.accommodationNote && (
+            <p className="location-venue location-accommodation">{location.accommodationNote}</p>
+          )}
           <a className="location-map-btn location-map-btn--desktop" href={location.mapUrl} target="_blank" rel="noreferrer">
             {location.mapLabel}
           </a>
@@ -28,10 +30,11 @@ function LocationSection({ location }) {
             loading="lazy"
             referrerPolicy="no-referrer-when-downgrade"
           />
+          <p className="location-venue">{location.address}</p>
+          <a className="location-map-btn location-map-btn--mobile" href={location.mapUrl} target="_blank" rel="noreferrer">
+            {location.mapLabel}
+          </a>
         </div>
-        <a className="location-map-btn location-map-btn--mobile" href={location.mapUrl} target="_blank" rel="noreferrer">
-          {location.mapLabel}
-        </a>
       </div>
     </section>
   )
