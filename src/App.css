@@ -225,7 +225,6 @@
   scale: 1.1;
   height: auto;
   border-radius: 2px;
-  clip-path: inset(22% 5% 4% 10%);
   box-shadow: 0 20px 46px rgba(44, 24, 12, 0.22);
   object-fit: cover;
   pointer-events: none;
@@ -1338,7 +1337,6 @@
   .welcome-video {
     width: 78%;
     scale: 1.05;
-    clip-path: inset(16% 4% 3% 8%);
   }
 
   .welcome-flowers {
@@ -1667,7 +1665,6 @@
   .welcome-video {
     width: 84%;
     scale: 1;
-    clip-path: inset(14% 3% 2% 6%);
   }
 
   .welcome-content {
@@ -2040,7 +2037,6 @@
 
   .welcome-video {
     width: 240px;
-    clip-path: inset(12% 2% 2% 5%);
   }
 
   .schedule-day h3,
